@@ -13,17 +13,7 @@ class MirrorWorldFlutter {
   /// get the instance of the [MirrorWorldFlutter].
   static MirrorWorldFlutter get instance => _instance;
 
-  /// Function to initialize the Intercom SDK.
-  ///
-  /// First, you'll need to get your Intercom [apiKey].
-  /// [mirrorEnv] is required if you want to use Intercom in Android.
-  /// [useDebugMode] is required if you want to use Intercom in iOS.
-  ///
-  /// You can get these from Intercom settings:
-  /// * [Android](https://app.intercom.com/a/apps/_/settings/android)
-  /// * [iOS](https://app.intercom.com/a/apps/_/settings/ios)
-  ///
-  /// Then, initialize Intercom in main method.
+  /// Function to initialize the MirrorSDK
   Future<void> initialize({
     required String apiKey,
     MirrorEnv? mirrorEnv,
