@@ -1,8 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:mirror_world_universe/mirror_world_universe.dart';
-//import 'package:mirror_world_universe/mirror_world_universe.dart';
+import 'package:mirror_world_flutter/mirror_world_flutter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +15,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final _mirrorWorld = MirrorWorldUniverse.instance;
+  final _mirrorWorld = MirrorWorldFlutter.instance;
 
   @override
   void initState() {
@@ -80,7 +79,8 @@ class _MyAppState extends State<MyApp> {
             MirrorButton(
               text: 'openMarket',
               onPressed: () async {
-                await _mirrorWorld.openMarket(marketUrl: 'https://jump-devnet.mirrorworld.fun');
+                await _mirrorWorld.openMarket(
+                    marketUrl: 'https://jump-devnet.mirrorworld.fun');
               },
             ),
             MirrorButton(
@@ -110,19 +110,25 @@ class _MyAppState extends State<MyApp> {
             MirrorButton(
               text: 'getTransactions',
               onPressed: () async {
-                await _mirrorWorld.getTransactions(before: 'bvcofigBLTmy3DJ29P8Nfh5aJ1GHwS6ncSmTBZdYGfXCs2e5pvY7nV8zBXYefoeczggVXEkKAkNy1GAZPpHhmWi');
+                await _mirrorWorld.getTransactions(
+                    before:
+                        'bvcofigBLTmy3DJ29P8Nfh5aJ1GHwS6ncSmTBZdYGfXCs2e5pvY7nV8zBXYefoeczggVXEkKAkNy1GAZPpHhmWi');
               },
             ),
             MirrorButton(
               text: 'getTransaction',
               onPressed: () async {
-                await _mirrorWorld.getTransaction(signature: 'bvcofigBLTmy3DJ29P8Nfh5aJ1GHwS6ncSmTBZdYGfXCs2e5pvY7nV8zBXYefoeczggVXEkKAkNy1GAZPpHhmWi');
+                await _mirrorWorld.getTransaction(
+                    signature:
+                        'bvcofigBLTmy3DJ29P8Nfh5aJ1GHwS6ncSmTBZdYGfXCs2e5pvY7nV8zBXYefoeczggVXEkKAkNy1GAZPpHhmWi');
               },
             ),
             MirrorButton(
               text: 'getNFTDetails',
               onPressed: () async {
-                await _mirrorWorld.getNFTDetails(mintAddress: 'BP3KqTZbyPsbGtYKGbbvbbheZW6H6V3wGooV8dj5RRVB');
+                await _mirrorWorld.getNFTDetails(
+                    mintAddress:
+                        'BP3KqTZbyPsbGtYKGbbvbbheZW6H6V3wGooV8dj5RRVB');
               },
             ),
             MirrorButton(

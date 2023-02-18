@@ -20,7 +20,7 @@ rootProject.allprojects {
         google()
         mavenCentral()
         flatDir {
-            dirs project(':mirror_world_universe').file('libs')
+            dirs project(':mirror_world_flutter').file('libs')
         }
     }
 }

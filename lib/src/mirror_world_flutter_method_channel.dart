@@ -4,28 +4,28 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 import 'enum/enum.dart';
-import 'mirror_world_universe_platform_interface.dart';
+import 'mirror_world_flutter_platform_interface.dart';
 
-/// An implementation of [MirrorworldUniversePlatform] that uses method channels.
-class MethodChannelMirrorworldUniverse extends MirrorworldUniversePlatform {
+/// An implementation of [MirrorWorldFlutterPlatform] that uses method channels.
+class MethodChannelMirrorWorldFlutter extends MirrorWorldFlutterPlatform {
   /// The method channel used to interact with the native platform.
 
-  MethodChannelMirrorworldUniverse() {
+  MethodChannelMirrorWorldFlutter() {
     listen();
   }
 
   @visibleForTesting
-  final methodChannel = const MethodChannel('mirror_world_universe');
+  final methodChannel = const MethodChannel('mirror_world_flutter');
 
   @visibleForTesting
-  final eventChannel = const EventChannel('mirror_world_universe/event');
+  final eventChannel = const EventChannel('mirror_world_flutter/event');
 
   @override
   Future<void> listen() async {
     print('Listening to: ${eventChannel.name}');
     await for (final event in eventChannel.receiveBroadcastStream()) {
       try {
-        print('mirror_world_universe/event: ${jsonEncode(event)}');
+        print('mirror_world_flutter/event: ${jsonEncode(event)}');
       } catch (e) {
         print(e.toString());
       }

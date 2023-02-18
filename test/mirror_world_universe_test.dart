@@ -1,27 +1,27 @@
 /* import 'package:flutter_test/flutter_test.dart';
-import 'package:mirror_world_universe/mirror_world_universe.dart';
+import 'package:mirror_world_flutter/mirror_world_flutter.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-class MockMirrorworldUniversePlatform
+class MockMirrorWorldFlutterPlatform
     with MockPlatformInterfaceMixin
-    implements MirrorworldUniversePlatform {
+    implements MirrorWorldFlutterPlatform {
   @override
   Future<String?> getPlatformVersion() => Future.value('42');
 }
 
 void main() {
-  final MirrorworldUniversePlatform initialPlatform =
-      MirrorworldUniversePlatform.instance;
+  final MirrorWorldFlutterPlatform initialPlatform =
+      MirrorWorldFlutterPlatform.instance;
 
-  test('$MethodChannelMirrorworldUniverse is the default instance', () {
-    expect(initialPlatform, isInstanceOf<MethodChannelMirrorworldUniverse>());
+  test('$MethodChannelMirrorWorldFlutter is the default instance', () {
+    expect(initialPlatform, isInstanceOf<MethodChannelMirrorWorldFlutter>());
   });
 
   test('getPlatformVersion', () async {
-    MirrorworldUniverse mirrorWorldUniversePlugin = MirrorworldUniverse();
-    MockMirrorworldUniversePlatform fakePlatform =
-        MockMirrorworldUniversePlatform();
-    MirrorworldUniversePlatform.instance = fakePlatform;
+    MirrorWorldFlutter mirrorWorldUniversePlugin = MirrorWorldFlutter();
+    MockMirrorWorldFlutterPlatform fakePlatform =
+        MockMirrorWorldFlutterPlatform();
+    MirrorWorldFlutterPlatform.instance = fakePlatform;
 
     expect(await mirrorWorldUniversePlugin.getPlatformVersion(), '42');
   });

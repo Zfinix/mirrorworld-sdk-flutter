@@ -1,11 +1,11 @@
 /* import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mirror_world_universe/mirror_world_universe.dart';
+import 'package:mirror_world_flutter/mirror_world_flutter.dart';
 
 void main() {
-  MethodChannelMirrorworldUniverse platform =
-      MethodChannelMirrorworldUniverse();
-  const MethodChannel channel = MethodChannel('mirror_world_universe');
+  MethodChannelMirrorWorldFlutter platform =
+      MethodChannelMirrorWorldFlutter();
+  const MethodChannel channel = MethodChannel('mirror_world_flutter');
 
   TestWidgetsFlutterBinding.ensureInitialized();
 

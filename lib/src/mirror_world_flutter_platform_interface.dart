@@ -1,24 +1,24 @@
-import 'package:mirror_world_universe/mirror_world_universe.dart';
+import 'package:mirror_world_flutter/mirror_world_flutter.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-abstract class MirrorworldUniversePlatform extends PlatformInterface {
-  /// Constructs a MirrorworldUniversePlatform.
-  MirrorworldUniversePlatform() : super(token: _token);
+abstract class MirrorWorldFlutterPlatform extends PlatformInterface {
+  /// Constructs a MirrorWorldFlutterPlatform.
+  MirrorWorldFlutterPlatform() : super(token: _token);
 
   static final Object _token = Object();
 
-  static MirrorworldUniversePlatform _instance =
-      MethodChannelMirrorworldUniverse();
+  static MirrorWorldFlutterPlatform _instance =
+      MethodChannelMirrorWorldFlutter();
 
-  /// The default instance of [MirrorworldUniversePlatform] to use.
+  /// The default instance of [MirrorWorldFlutterPlatform] to use.
   ///
-  /// Defaults to [MethodChannelMirrorworldUniverse].
-  static MirrorworldUniversePlatform get instance => _instance;
+  /// Defaults to [MethodChannelMirrorWorldFlutter].
+  static MirrorWorldFlutterPlatform get instance => _instance;
 
   /// Platform-specific implementations should set this with their own
-  /// platform-specific class that extends [MirrorworldUniversePlatform] when
+  /// platform-specific class that extends [MirrorWorldFlutterPlatform] when
   /// they register themselves.
-  static set instance(MirrorworldUniversePlatform instance) {
+  static set instance(MirrorWorldFlutterPlatform instance) {
     PlatformInterface.verifyToken(instance, _token);
     _instance = instance;
   }
@@ -108,7 +108,8 @@ abstract class MirrorworldUniversePlatform extends PlatformInterface {
   Future<void> getNFTsOwnedByAddress({
     required String ownerWalletAddress,
   }) {
-    throw UnimplementedError('getNFTsOwnedByAddress() has not been implemented.');
+    throw UnimplementedError(
+        'getNFTsOwnedByAddress() has not been implemented.');
   }
 
   Future<void> transferSOL({
@@ -133,7 +134,8 @@ abstract class MirrorworldUniversePlatform extends PlatformInterface {
     required String detailUrl,
     String? confirmation,
   }) {
-    throw UnimplementedError('createVerifiedCollection() has not been implemented.');
+    throw UnimplementedError(
+        'createVerifiedCollection() has not been implemented.');
   }
 
   Future<void> mintNFT({
@@ -149,7 +151,8 @@ abstract class MirrorworldUniversePlatform extends PlatformInterface {
   Future<void> checkStatusOfMinting({
     required List<String> mintAddresses,
   }) {
-    throw UnimplementedError('checkStatusOfMinting() has not been implemented.');
+    throw UnimplementedError(
+        'checkStatusOfMinting() has not been implemented.');
   }
 
   Future<void> listNFT({
@@ -207,7 +210,8 @@ abstract class MirrorworldUniversePlatform extends PlatformInterface {
   Future<void> fetchNFTsByMintAddresses({
     required List<String> mintAddresses,
   }) {
-    throw UnimplementedError('fetchNFTsByMintAddresses() has not been implemented.');
+    throw UnimplementedError(
+        'fetchNFTsByMintAddresses() has not been implemented.');
   }
 
   Future<void> fetchNFTsByCreatorAddresses({
@@ -215,7 +219,8 @@ abstract class MirrorworldUniversePlatform extends PlatformInterface {
     int? limit,
     int? offset,
   }) {
-    throw UnimplementedError('fetchNFTsByCreatorAddresses() has not been implemented.');
+    throw UnimplementedError(
+        'fetchNFTsByCreatorAddresses() has not been implemented.');
   }
 
   Future<void> fetchNFTsByUpdateAuthorities({
@@ -223,7 +228,8 @@ abstract class MirrorworldUniversePlatform extends PlatformInterface {
     int? limit,
     int? offset,
   }) {
-    throw UnimplementedError('fetchNFTsByUpdateAuthorities() has not been implemented.');
+    throw UnimplementedError(
+        'fetchNFTsByUpdateAuthorities() has not been implemented.');
   }
 
   Future<void> fetchNFTsByOwnerAddresses({
@@ -231,12 +237,14 @@ abstract class MirrorworldUniversePlatform extends PlatformInterface {
     int? limit,
     int? offset,
   }) {
-    throw UnimplementedError('fetchNFTsByOwnerAddresses() has not been implemented.');
+    throw UnimplementedError(
+        'fetchNFTsByOwnerAddresses() has not been implemented.');
   }
 
   Future<void> fetchNFTMarketplaceActivity({
     required String mintAddress,
   }) {
-    throw UnimplementedError('fetchNFTMarketplaceActivity() has not been implemented.');
+    throw UnimplementedError(
+        'fetchNFTMarketplaceActivity() has not been implemented.');
   }
 }

@@ -13,8 +13,8 @@ class MirrorWorldUniversePlugin: FlutterPlugin, ActivityAware {
   /// This local reference serves to register the plugin with the Flutter Engine and unregister it
   /// when the Flutter Engine is detached from the Activity
   private lateinit var channel : MethodChannel
-  private val channelId = "mirror_world_universe"
-  private val eventChannelId = "mirror_world_universe/event"
+  private val channelId = "mirror_world_flutter"
+  private val eventChannelId = "mirror_world_flutter/event"
   private lateinit var eventChannel: EventChannel
   private var handler: MethodCallHandlerImpl? = null
 

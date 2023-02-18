@@ -1,4 +1,4 @@
-# mirror_world_universe
+# mirror_world_flutter
 
 A new Flutter plugin project.
 

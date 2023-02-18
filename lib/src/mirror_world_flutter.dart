@@ -1,16 +1,17 @@
-library mirror_world_universe;
+library mirror_world_flutter;
 
 import 'dart:async';
-import 'package:mirror_world_universe/mirror_world_universe.dart';
 
-class MirrorWorldUniverse {
+import 'package:mirror_world_flutter/mirror_world_flutter.dart';
+
+class MirrorWorldFlutter {
   /// private constructor to not allow the object creation from outside.
-  MirrorWorldUniverse._();
+  MirrorWorldFlutter._();
 
-  static final MirrorWorldUniverse _instance = MirrorWorldUniverse._();
+  static final MirrorWorldFlutter _instance = MirrorWorldFlutter._();
 
-  /// get the instance of the [MirrorWorldUniverse].
-  static MirrorWorldUniverse get instance => _instance;
+  /// get the instance of the [MirrorWorldFlutter].
+  static MirrorWorldFlutter get instance => _instance;
 
   /// Function to initialize the Intercom SDK.
   ///
@@ -28,7 +29,7 @@ class MirrorWorldUniverse {
     MirrorEnv? mirrorEnv,
     bool? useDebugMode,
   }) {
-    return MirrorworldUniversePlatform.instance.initialize(
+    return MirrorWorldFlutterPlatform.instance.initialize(
       apiKey: apiKey,
       mirrorEnv: mirrorEnv,
       useDebugMode: useDebugMode,
@@ -36,31 +37,31 @@ class MirrorWorldUniverse {
   }
 
   Future<void> startLogin() {
-    return MirrorworldUniversePlatform.instance.startLogin();
+    return MirrorWorldFlutterPlatform.instance.startLogin();
   }
 
   Future<void> loginWithEmail({
     required String email,
     required String password,
   }) {
-    return MirrorworldUniversePlatform.instance.loginWithEmail(
+    return MirrorWorldFlutterPlatform.instance.loginWithEmail(
       email: email,
       password: password,
     );
   }
 
   Future<void> guestLogin() {
-    return MirrorworldUniversePlatform.instance.guestLogin();
+    return MirrorWorldFlutterPlatform.instance.guestLogin();
   }
 
   Future<void> logOut() {
-    return MirrorworldUniversePlatform.instance.logOut();
+    return MirrorWorldFlutterPlatform.instance.logOut();
   }
 
   Future<void> openMarket({
     required String marketUrl,
   }) {
-    return MirrorworldUniversePlatform.instance.openMarket(
+    return MirrorWorldFlutterPlatform.instance.openMarket(
       marketUrl: marketUrl,
     );
   }
@@ -68,7 +69,7 @@ class MirrorWorldUniverse {
   Future<void> openUrl({
     required String url,
   }) {
-    return MirrorworldUniversePlatform.instance.openUrl(
+    return MirrorWorldFlutterPlatform.instance.openUrl(
       url: url,
     );
   }
@@ -76,25 +77,25 @@ class MirrorWorldUniverse {
   Future<void> openWallet({
     String? walletUrl,
   }) {
-    return MirrorworldUniversePlatform.instance.openWallet(
+    return MirrorWorldFlutterPlatform.instance.openWallet(
       walletUrl: walletUrl,
     );
   }
 
   Future<void> fetchUser() {
-    return MirrorworldUniversePlatform.instance.fetchUser();
+    return MirrorWorldFlutterPlatform.instance.fetchUser();
   }
 
   Future<void> queryUser({
     required String email,
   }) {
-    return MirrorworldUniversePlatform.instance.queryUser(
+    return MirrorWorldFlutterPlatform.instance.queryUser(
       email: email,
     );
   }
 
   Future<void> getTokens() {
-    return MirrorworldUniversePlatform.instance.getTokens();
+    return MirrorWorldFlutterPlatform.instance.getTokens();
   }
 
   Future<void> getTransactions({
@@ -102,7 +103,7 @@ class MirrorWorldUniverse {
     int? limit,
   }) async {
     try {
-      MirrorworldUniversePlatform.instance.getTransactions(
+      MirrorWorldFlutterPlatform.instance.getTransactions(
         before: before,
         limit: limit,
       );
@@ -115,7 +116,7 @@ class MirrorWorldUniverse {
     required String signature,
   }) async {
     try {
-      await MirrorworldUniversePlatform.instance.getTransaction(
+      await MirrorWorldFlutterPlatform.instance.getTransaction(
         signature: signature,
       );
     } catch (e) {
@@ -127,7 +128,7 @@ class MirrorWorldUniverse {
     required String mintAddress,
   }) async {
     try {
-      MirrorworldUniversePlatform.instance.getNFTDetails(
+      MirrorWorldFlutterPlatform.instance.getNFTDetails(
         mintAddress: mintAddress,
       );
     } catch (e) {
@@ -138,7 +139,7 @@ class MirrorWorldUniverse {
   Future<void> getNFTsOwnedByAddress({
     required String ownerWalletAddress,
   }) {
-    return MirrorworldUniversePlatform.instance.getNFTsOwnedByAddress(
+    return MirrorWorldFlutterPlatform.instance.getNFTsOwnedByAddress(
       ownerWalletAddress: ownerWalletAddress,
     );
   }
@@ -147,7 +148,7 @@ class MirrorWorldUniverse {
     required String toPublicKey,
     required double amount,
   }) {
-    return MirrorworldUniversePlatform.instance.transferSOL(
+    return MirrorWorldFlutterPlatform.instance.transferSOL(
       toPublicKey: toPublicKey,
       amount: amount,
     );
@@ -159,7 +160,7 @@ class MirrorWorldUniverse {
     required double amount,
     required double decimals,
   }) {
-    return MirrorworldUniversePlatform.instance.transferSPLToken(
+    return MirrorWorldFlutterPlatform.instance.transferSPLToken(
       toPublicKey: toPublicKey,
       tokenMint: tokenMint,
       amount: amount,
@@ -173,7 +174,7 @@ class MirrorWorldUniverse {
     required String detailUrl,
     String? confirmation,
   }) {
-    return MirrorworldUniversePlatform.instance.createVerifiedCollection(
+    return MirrorWorldFlutterPlatform.instance.createVerifiedCollection(
       name: name,
       symbol: symbol,
       detailUrl: detailUrl,
@@ -188,7 +189,7 @@ class MirrorWorldUniverse {
     required String detailUrl,
     String? confirmation,
   }) {
-    return MirrorworldUniversePlatform.instance.mintNFT(
+    return MirrorWorldFlutterPlatform.instance.mintNFT(
       name: name,
       collectionMint: collectionMint,
       symbol: symbol,
@@ -200,7 +201,7 @@ class MirrorWorldUniverse {
   Future<void> checkStatusOfMinting({
     required List<String> mintAddresses,
   }) {
-    return MirrorworldUniversePlatform.instance.checkStatusOfMinting(
+    return MirrorWorldFlutterPlatform.instance.checkStatusOfMinting(
       mintAddresses: mintAddresses,
     );
   }
@@ -211,7 +212,7 @@ class MirrorWorldUniverse {
     String? auctionHouse,
     String? confirmation,
   }) {
-    return MirrorworldUniversePlatform.instance.listNFT(
+    return MirrorWorldFlutterPlatform.instance.listNFT(
       price: price,
       mintAddress: mintAddress,
       auctionHouse: auctionHouse,
@@ -223,7 +224,7 @@ class MirrorWorldUniverse {
     required double price,
     required String mintAddress,
   }) {
-    return MirrorworldUniversePlatform.instance.buyNFT(
+    return MirrorWorldFlutterPlatform.instance.buyNFT(
       price: price,
       mintAddress: mintAddress,
     );
@@ -234,7 +235,7 @@ class MirrorWorldUniverse {
     required String mintAddress,
     required String confirmation,
   }) {
-    return MirrorworldUniversePlatform.instance.updateNFTListing(
+    return MirrorWorldFlutterPlatform.instance.updateNFTListing(
       price: price,
       mintAddress: mintAddress,
       confirmation: confirmation,
@@ -251,7 +252,7 @@ class MirrorWorldUniverse {
     required String detailUrl,
     String? confirmation,
   }) {
-    return MirrorworldUniversePlatform.instance.updateNFTProperties(
+    return MirrorWorldFlutterPlatform.instance.updateNFTProperties(
       mintAddress: mintAddress,
       name: name,
       updateAuthority: updateAuthority,
@@ -267,7 +268,7 @@ class MirrorWorldUniverse {
     required String mintAddress,
     required String confirmation,
   }) {
-    return MirrorworldUniversePlatform.instance.cancelNFTListing(
+    return MirrorWorldFlutterPlatform.instance.cancelNFTListing(
       price: price,
       mintAddress: mintAddress,
       confirmation: confirmation,
@@ -278,7 +279,7 @@ class MirrorWorldUniverse {
     required String mintAddress,
     required String toWalletAddress,
   }) {
-    return MirrorworldUniversePlatform.instance.transferNFT(
+    return MirrorWorldFlutterPlatform.instance.transferNFT(
       mintAddress: mintAddress,
       toWalletAddress: toWalletAddress,
     );
@@ -287,7 +288,7 @@ class MirrorWorldUniverse {
   Future<void> fetchNFTsByMintAddresses({
     required List<String> mintAddresses,
   }) {
-    return MirrorworldUniversePlatform.instance.fetchNFTsByMintAddresses(
+    return MirrorWorldFlutterPlatform.instance.fetchNFTsByMintAddresses(
       mintAddresses: mintAddresses,
     );
   }
@@ -297,7 +298,7 @@ class MirrorWorldUniverse {
     int? limit,
     int? offset,
   }) {
-    return MirrorworldUniversePlatform.instance.fetchNFTsByCreatorAddresses(
+    return MirrorWorldFlutterPlatform.instance.fetchNFTsByCreatorAddresses(
       creators: creators,
       limit: limit,
       offset: offset,
@@ -309,7 +310,7 @@ class MirrorWorldUniverse {
     int? limit,
     int? offset,
   }) {
-    return MirrorworldUniversePlatform.instance.fetchNFTsByUpdateAuthorities(
+    return MirrorWorldFlutterPlatform.instance.fetchNFTsByUpdateAuthorities(
       updateAuthorities: updateAuthorities,
       limit: limit,
       offset: offset,
@@ -321,7 +322,7 @@ class MirrorWorldUniverse {
     int? limit,
     int? offset,
   }) {
-    return MirrorworldUniversePlatform.instance.fetchNFTsByOwnerAddresses(
+    return MirrorWorldFlutterPlatform.instance.fetchNFTsByOwnerAddresses(
       owners: owners,
       limit: limit,
       offset: offset,
@@ -331,7 +332,7 @@ class MirrorWorldUniverse {
   Future<void> fetchNFTMarketplaceActivity({
     required String mintAddress,
   }) {
-    return MirrorworldUniversePlatform.instance.fetchNFTMarketplaceActivity(
+    return MirrorWorldFlutterPlatform.instance.fetchNFTMarketplaceActivity(
       mintAddress: mintAddress,
     );
   }

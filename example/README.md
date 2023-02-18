@@ -1,6 +1,6 @@
-# mirror_world_universe_example
+# mirror_world_flutter_example
 
-Demonstrates how to use the mirror_world_universe plugin.
+Demonstrates how to use the mirror_world_flutter plugin.
 
 ## Getting Started
 

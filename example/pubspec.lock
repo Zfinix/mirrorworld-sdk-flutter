@@ -115,7 +115,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.8.0"
-  mirror_world_universe:
+  mirror_world_flutter:
     dependency: "direct main"
     description:
       path: ".."
