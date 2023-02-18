@@ -58,6 +58,10 @@ class MirrorWorldFlutter {
     return MirrorWorldFlutterPlatform.instance.logOut();
   }
 
+  Future<bool> isLoggedIn() {
+    return MirrorWorldFlutterPlatform.instance.isLoggedIn();
+  }
+
   Future<void> openMarket({
     required String marketUrl,
   }) {
@@ -127,13 +131,9 @@ class MirrorWorldFlutter {
   Future<void> getNFTDetails({
     required String mintAddress,
   }) async {
-    try {
-      MirrorWorldFlutterPlatform.instance.getNFTDetails(
-        mintAddress: mintAddress,
-      );
-    } catch (e) {
-      print(e.toString());
-    }
+    MirrorWorldFlutterPlatform.instance.getNFTDetails(
+      mintAddress: mintAddress,
+    );
   }
 
   Future<void> getNFTsOwnedByAddress({

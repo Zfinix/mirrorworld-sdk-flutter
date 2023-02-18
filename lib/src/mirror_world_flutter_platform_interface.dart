@@ -56,6 +56,10 @@ abstract class MirrorWorldFlutterPlatform extends PlatformInterface {
     throw UnimplementedError('guestLogin() has not been implemented.');
   }
 
+  Future<bool> isLoggedIn() {
+    throw UnimplementedError('isLoggedIn() has not been implemented.');
+  }
+
   Future<void> logOut() {
     throw UnimplementedError('logOut() has not been implemented.');
   }

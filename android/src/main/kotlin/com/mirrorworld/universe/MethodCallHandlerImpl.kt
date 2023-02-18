@@ -64,11 +64,11 @@ internal class MethodCallHandlerImpl(
                 "loginWithEmail" -> loginWithEmail(call, result)
                 "isLoggedIn" -> result.success(isLoggedIn)
                 "logOut" -> logOut()
+                "openWallet" -> openWallet(call)
                 "openMarket" -> openMarket(call)
                 "fetchUser" -> fetchUser()
                 "queryUser" -> queryUser(call)
                 "getTokens" -> getTokens()
-                "openWallet" -> openWallet(call)
                 "openUrl" -> openUrl(call)
                 "getTransactions" -> getTransactions(call)
                 "getTransaction" -> getTransaction(call)
@@ -229,8 +229,7 @@ internal class MethodCallHandlerImpl(
                 override fun onSuccess(res: GetWalletTransactionsResponse) {
                     events?.success(
                         EventsHelper.mapEvent(
-                            name = EventsHelper.getTransactions,
-                            data = EventsHelper.toMap(res)
+                            name = EventsHelper.getTransactions, data = EventsHelper.toMap(res)
                         )
                     )
                 }
@@ -252,7 +251,8 @@ internal class MethodCallHandlerImpl(
                 override fun onFetchSuccess(res: SingleNFTResponse) {
                     events?.success(
                         EventsHelper.mapEvent(
-                            name = EventsHelper.getNFTDetails, data = EventsHelper.toMap(res.nft)
+                            name = EventsHelper.getNFTDetails,
+                            data = EventsHelper.toMap(res),
                         )
                     )
                 }
@@ -823,12 +823,16 @@ internal class EventsHelper {
             )
         }
 
-        fun toMap(res: Any): Map<String, Any?> {
+        fun toMap(res: Any?): Map<String, Any?> {
 
-            return if (res is List<*>) {
-                mapOf("data" to res.map { MirrorGsonUtils.getInstance().toJsonObj(it).toMap() })
-            } else {
-                MirrorGsonUtils.getInstance().toJsonObj(res).toMap()
+            return when (res) {
+                null -> mapOf()
+                is List<*> -> mapOf(
+                    "data" to res.map {
+                        MirrorGsonUtils.getInstance().toJsonObj(it).toMap()
+                    },
+                )
+                else -> MirrorGsonUtils.getInstance().toJsonObj(res).toMap()
             }
         }
     }

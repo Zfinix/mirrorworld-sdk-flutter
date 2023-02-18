@@ -78,6 +78,11 @@ class MethodChannelMirrorWorldFlutter extends MirrorWorldFlutterPlatform {
   }
 
   @override
+  Future<bool> isLoggedIn() async {
+    return await methodChannel.invokeMethod<bool>('isLoggedIn') ?? false;
+  }
+
+  @override
   Future<void> openMarket({
     required String marketUrl,
   }) {

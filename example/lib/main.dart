@@ -27,7 +27,9 @@ class _MyAppState extends State<MyApp> {
   Future<void> initPlatformState() async {
     try {
       await _mirrorWorld.initialize(
-          apiKey: 'mw_KnWBjjEM4iV7Qy6epkcmdUlljJUlmC1Cs23');
+        apiKey: 'mw_KnWBjjEM4iV7Qy6epkcmdUlljJUlmC1Cs23',
+        mirrorEnv: MirrorEnv.devNet,
+      );
     } catch (e) {
       print(e.toString());
     }
@@ -74,6 +76,13 @@ class _MyAppState extends State<MyApp> {
               text: 'logOut',
               onPressed: () async {
                 await _mirrorWorld.logOut();
+              },
+            ),
+            MirrorButton(
+              text: 'isLoggedIn',
+              onPressed: () async {
+                final isLoggedIn = await _mirrorWorld.isLoggedIn();
+                print(isLoggedIn);
               },
             ),
             MirrorButton(
@@ -127,15 +136,17 @@ class _MyAppState extends State<MyApp> {
               text: 'getNFTDetails',
               onPressed: () async {
                 await _mirrorWorld.getNFTDetails(
-                    mintAddress:
-                        'BP3KqTZbyPsbGtYKGbbvbbheZW6H6V3wGooV8dj5RRVB');
+                  mintAddress: 'BP3KqTZbyPsbGtYKGbbvbbheZW6H6V3wGooV8dj5RRVB',
+                );
               },
             ),
             MirrorButton(
               text: 'getNFTsOwnedByAddress',
               onPressed: () async {
                 await _mirrorWorld.getNFTsOwnedByAddress(
-                    ownerWalletAddress: 'getNFTsOwnedByAddress');
+                  ownerWalletAddress:
+                      'DGHNVi4sk6hY1fhtkEBsopxQdwrwosQxy8Nnr5iEc7P9',
+                );
               },
             ),
           ],

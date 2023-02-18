@@ -1,0 +1,29 @@
+PODS:
+  - Flutter (1.0.0)
+  - mirror_world_flutter (0.0.1):
+    - Flutter
+    - MirrorWorldSDK
+  - MirrorWorldSDK (1.0.1)
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - mirror_world_flutter (from `.symlinks/plugins/mirror_world_flutter/ios`)
+
+SPEC REPOS:
+  trunk:
+    - MirrorWorldSDK
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  mirror_world_flutter:
+    :path: ".symlinks/plugins/mirror_world_flutter/ios"
+
+SPEC CHECKSUMS:
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  mirror_world_flutter: 5bed779af6d1a0c39fab5b75c7fc1a0a350b361d
+  MirrorWorldSDK: 920d25f2d1a10921211f1267bd867626a1123660
+
+PODFILE CHECKSUM: ef19549a9bc3046e7bb7d2fab4d021637c0c58a3
+
+COCOAPODS: 1.11.3
