@@ -48,8 +48,8 @@ class MirrorWorldFlutter {
     return MirrorWorldFlutterPlatform.instance.logOut();
   }
 
-  Future<bool> isLoggedIn() {
-    return MirrorWorldFlutterPlatform.instance.isLoggedIn();
+  Future<bool> checkAuthenticated() {
+    return MirrorWorldFlutterPlatform.instance.checkAuthenticated();
   }
 
   Future<void> openMarket({

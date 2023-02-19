@@ -36,14 +36,32 @@ public class MethodCallHandlerImpl: NSObject, FlutterStreamHandler{
         case "startLogin":
             self.startLogin(call: call)
             
-        case "isLoggedIn":
-            self.isLoggedIn(result: result)
+        case "checkAuthenticated":
+            self.checkAuthenticated(result: result)
             
         case "logOut":
             self.logOut(result: result)
             
+        case "getAccessToken":
+            self.getAccessToken(result: result)
+            
+        case "queryUser":
+            self.queryUser(call: call)
+            
+        case "openMarket":
+            self.openMarket(call: call)
+            
         case "openWallet":
             self.openWallet(result: result)
+            
+        case "openUrl":
+            self.openUrl(call: call)
+            
+        case "getNFTDetails":
+            self.getNFTDetails(call: call)
+            
+        case "getTokens":
+            self.getTokens(call: call)
             
         default:
             result(FlutterMethodNotImplemented)
@@ -87,21 +105,25 @@ public class MethodCallHandlerImpl: NSObject, FlutterStreamHandler{
     public func startLogin(call: FlutterMethodCall) {
         MWSDK.StartLogin(
             onSuccess: { userInfo in
+                
                 self.sendEvent(
                     event: EventsHelper.mapEvent(
                         name: EventsHelper.loginEvent,
-                        data: userInfo
+                        data: MirrorWorldSDKAuthData.share.userInfo
                     )
                 )
+                
             },
             onFail: {
                 self.onFetchFailed(code: 0, message: "login failed !")
             }
         )
         
+        
+        
     }
     
-    public func isLoggedIn(result: @escaping FlutterResult) {
+    public func checkAuthenticated(result: @escaping FlutterResult) {
         MWSDK.CheckAuthenticated { onBool in
             result(onBool)
         }
@@ -114,6 +136,41 @@ public class MethodCallHandlerImpl: NSObject, FlutterStreamHandler{
             self.onFetchFailed(code: 0, message: "logout failed !")
         }
     }
+    
+    
+    public func getAccessToken(result: @escaping FlutterResult) {
+        MWSDK.GetAccessToken(callBack: { token in
+            self.sendEvent(
+                event: EventsHelper.mapEvent(
+                    name: EventsHelper.getAccessToken,
+                    data: token
+                )
+            )
+        })
+    }
+    
+    
+    public func queryUser(call: FlutterMethodCall) {
+        
+        if let args = call.arguments as? Dictionary<String, Any>,
+           let email = args["email"] as? String{
+            
+            MWSDK.QueryUser(email: email) { user in
+                self.sendEvent(
+                    event: EventsHelper.mapEvent(
+                        name: EventsHelper.loginEvent,
+                        data: user
+                    )
+                )
+                
+            }
+        onFetchFailed: { code, error in
+            self.onFetchFailed(code: code, message: error)
+        }
+        }
+    }
+    
+    
     
     public func openWallet(result: @escaping FlutterResult) {
         MWSDK.OpenWallet(
@@ -129,6 +186,51 @@ public class MethodCallHandlerImpl: NSObject, FlutterStreamHandler{
         )
     }
     
+    public func openMarket(call: FlutterMethodCall) {
+        if let args = call.arguments as? Dictionary<String, Any>,
+           let marketUrl = args["market_url"] as? String{
+            MWSDK.openMarketPlacePage(url: marketUrl)
+        }
+    }
+    
+    public func openUrl(call: FlutterMethodCall) {
+        if let args = call.arguments as? Dictionary<String, Any>,
+           let url = args["url"] as? String {
+            MWSDK.handleOpen(url: URL(string: url)!)
+        }
+    }
+    
+    public func getNFTDetails(call: FlutterMethodCall) {
+        if let args = call.arguments as? Dictionary<String, Any>,
+           let mintAddress = args["mint_address"] as? String {
+            MWSDK.FetchSingleNFT(mint_Address: mintAddress) { data in
+                self.sendEvent(
+                    event: EventsHelper.mapEvent(
+                        name: EventsHelper.getNFTDetails,
+                        data: data
+                    )
+                )
+            } onFailed: { code, error in
+                self.onFetchFailed(code: code, message: error)
+            }
+            
+        }
+    }
+    
+    public func getTokens(call: FlutterMethodCall) {
+        MWSDK.GetWalletTokens{ data in
+            self.sendEvent(
+                event: EventsHelper.mapEvent(
+                    name: EventsHelper.getTokens,
+                    data: data
+                )
+            )
+        } onFailed: {
+            self.onFetchFailed(code: 404, message: "failed to Get Wallet Tokens")
+        }
+        
+    }
+    
     
     public func sendEvent(event: [String : Any?]?) {
         if(self.events == nil){
@@ -140,7 +242,6 @@ public class MethodCallHandlerImpl: NSObject, FlutterStreamHandler{
     
     
     private func onFetchFailed(code: Int, message: String?) {
-        
         sendEvent(
             event: EventsHelper.mapEvent(
                 name: EventsHelper.fetchFailed,
@@ -174,6 +275,7 @@ struct EventsHelper {
     static let getTransactions: String = "GET_TRANSACTIONS"
     static let getTransaction: String = "GET_TRANSACTION"
     static let loginEvent: String = "LOGIN_EVENT"
+    static let getAccessToken: String = "GET_ACCESS_TOKEN"
     static let getNFTDetails: String = "NFT_DETAILS"
     static let getNFTsOwnedByAddress: String = "NFTs_OWNED_BY_ADDRESS"
     static let getCollectionFilterInfo: String = "GET_COLLECTION_FILTER_INFO"

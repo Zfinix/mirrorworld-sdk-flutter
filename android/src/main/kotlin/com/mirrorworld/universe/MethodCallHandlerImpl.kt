@@ -40,7 +40,7 @@ internal class MethodCallHandlerImpl(
     private var methodChannel: MethodChannel
     private val logTag: String = "MirrorSDKFlutter"
     private var useDebugMode = true
-    private var isLoggedIn = false
+    private var checkAuthenticated = false
 
     init {
         this.activity = activity
@@ -62,7 +62,7 @@ internal class MethodCallHandlerImpl(
                 "startLogin" -> startLogin()
                 "guestLogin" -> guestLogin()
                 "loginWithEmail" -> loginWithEmail(call, result)
-                "isLoggedIn" -> result.success(isLoggedIn)
+                "checkAuthenticated" -> result.success(checkAuthenticated)
                 "logOut" -> logOut()
                 "openWallet" -> openWallet(call)
                 "openMarket" -> openMarket(call)
@@ -772,7 +772,7 @@ internal class MethodCallHandlerImpl(
     }
 
     override fun onBool(boolValue: Boolean) {
-        isLoggedIn = boolValue
+        checkAuthenticated = boolValue
     }
 
     override fun onUserFetched(user: UserResponse) {

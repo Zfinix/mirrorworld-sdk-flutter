@@ -28,7 +28,7 @@ class _MyAppState extends State<MyApp> {
     try {
       await _mirrorWorld.initialize(
         apiKey: 'mw_KnWBjjEM4iV7Qy6epkcmdUlljJUlmC1Cs23',
-        mirrorEnv: MirrorEnv.devNet,
+        mirrorEnv: MirrorEnv.mainNet,
       );
     } catch (e) {
       print(e.toString());
@@ -79,10 +79,11 @@ class _MyAppState extends State<MyApp> {
               },
             ),
             MirrorButton(
-              text: 'isLoggedIn',
+              text: 'checkAuthenticated',
               onPressed: () async {
-                final isLoggedIn = await _mirrorWorld.isLoggedIn();
-                print(isLoggedIn);
+                final checkAuthenticated =
+                    await _mirrorWorld.checkAuthenticated();
+                print(checkAuthenticated);
               },
             ),
             MirrorButton(
